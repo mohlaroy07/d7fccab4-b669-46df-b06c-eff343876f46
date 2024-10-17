@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+
+<div class="container">
+
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h3 class="mb-0">Shaharlar</h3>
+        <h4 class="fw-bold">Jami {% city_count %} ta</h4>
+    </div>
+
+
+    <div class="row row-cols-3 g-3">
+        {% for city in cities %}
+
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <a href="{% url 'city_detail' city.pk %}">
+                        <h5 class="card-title">{{ city.name }} 🔸 {{ city.country }} </h5>
+                    </a>
+                    <p class="card-text">
+                        {{ city.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

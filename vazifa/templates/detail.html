@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h3 class="mb-0">{{ city.name }} 🔸 Mehmonxonalar</h3>
+
+        <h4 class="fw-bold">Jami {% hotel_count city.id %} ta</h4>
+    </div>
+
+
+
+    <div class="row row-cols-3 g-3">
+        {% for hotel in city.hotels.all %}
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ hotel.name }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-2 d-flex align-items-center justify-content-between">
+                        <div class="fw-bold">Yulduzlar</div>
+                        <div class="hotel-stars">{{ hotel.get_stars }}</div>
+                    </div>
+                    <div class="mb-2 d-flex align-items-center justify-content-between">
+                        <div class="fw-bold">Narxi 1 kun</div>
+                        <div class="hotel-stars">{{ hotel.price_per_night }}</div>
+                    </div>
+                    <div class="mb-2 btn btn-primary w-100">
+                        Tashrif buyurish
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}
